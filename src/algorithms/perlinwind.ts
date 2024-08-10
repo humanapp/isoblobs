@@ -43,15 +43,15 @@ export function step(prev: number[], params: PerlinWindParams): number[] {
   const now = Date.now();
   const next = new Array(prev.length).fill(0);
 
-  let { speedScalar, direction, turbulence } = params;
+  let { speedScalar, direction } = params;
   speedScalar =
     speedScalar === undefined
       ? initialPerlinWindParams.speedScalar
       : speedScalar;
   direction =
     direction === undefined ? initialPerlinWindParams.direction : direction;
-  turbulence =
-    turbulence === undefined ? initialPerlinWindParams.turbulence : turbulence;
+  //turbulence =
+    //turbulence === undefined ? initialPerlinWindParams.turbulence : turbulence;
 
   speedScalar = -0.001;
   let sizeScaler = 2.5;
