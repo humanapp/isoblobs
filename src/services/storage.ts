@@ -11,6 +11,7 @@ function setValue(key: string, val: string) {
   localStorage.setItem(key, val);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function delValue(key: string) {
   localStorage.removeItem(key);
 }

@@ -60,7 +60,7 @@ export const Sim: React.FC = () => {
         }
       }
     }
-  }, [canvas, board]);
+  }, [canvas, board, showLeds]);
 
   return (
     <Card className="w-fit">
