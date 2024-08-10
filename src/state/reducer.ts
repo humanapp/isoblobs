@@ -67,5 +67,16 @@ export function reducer(state: AppState, action: Action): AppState {
       newState.persistent.params[Algorithm.ISOBLOBS].vertical = action.vertical;
       return newState;
     }
+    case "ISOBLOBS_SET_COUNT": {
+      const newState = {
+        ...state,
+        persistent: {
+          ...state.persistent,
+          params: [...state.persistent.params],
+        },
+      };
+      newState.persistent.params[Algorithm.ISOBLOBS].count = action.count;
+      return newState;
+    }
   }
 }

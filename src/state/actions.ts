@@ -34,10 +34,16 @@ export type Isoblobs_SetVertical_Action = ActionBase & {
   vertical: number;
 };
 
+export type Isoblobs_SetCount_Action = ActionBase & {
+  type: "ISOBLOBS_SET_COUNT";
+  count: number;
+};
+
 export type Action =
   | SetShowLeds_Action
   | SetAlgorithm_Action
   | SetBoard_Action
   | Isoblobs_SetSpeedScalar_Action
   | Isoblobs_SetHorizontal_Action
-  | Isoblobs_SetVertical_Action;
+  | Isoblobs_SetVertical_Action
+  | Isoblobs_SetCount_Action;

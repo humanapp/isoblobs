@@ -1,16 +1,24 @@
 import { IsoblobsParams, initialIsoblobsParams } from "../types";
-import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS } from "../constants";
+import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS, Isoblobs_Sim_Params } from "../constants";
 
 class Metaball {
   currX: number;
   currY: number;
+
   constructor(
     public x: number,
     public y: number,
-    public radius: number
+    public r: number,
+    public h: number,
+    public v: number
   ) {
     this.currX = x;
     this.currY = y;
+  }
+
+  static create(index: number): Metaball {
+    const { x, y, r, h, v } = Isoblobs_Sim_Params[index];
+    return new Metaball(x, y, r, h, v);
   }
 
   // Calculate the influence of the metaball at a given point (px, py)
@@ -18,51 +26,38 @@ class Metaball {
     const dx = px - this.currX;
     const dy = py - this.currY;
     const distanceSquared = dx * dx + dy * dy;
-    return (this.radius * this.radius) / distanceSquared;
+    return (this.r * this.r) / distanceSquared;
+  }
+
+  update(now: number, params: IsoblobsParams): void {
+    this.currX = this.x + WIDTH_IN_CELLS * params.horizontal * (Math.sin(params.speedScalar * now / (this.h * 1000)));
+    this.currY = this.y + HEIGHT_IN_CELLS * params.vertical * (Math.cos(params.speedScalar * now / (this.v * 1000)));
   }
 }
 
-const metaballs: Metaball[] = [
-  new Metaball(
-    Math.floor(WIDTH_IN_CELLS * 0.5),
-    Math.floor(HEIGHT_IN_CELLS * 0.7),
-    1.25
-  ),
-  new Metaball(
-    Math.floor(WIDTH_IN_CELLS * 0.3),
-    Math.floor(HEIGHT_IN_CELLS * 0.2),
-    1.25
-  ),
-  new Metaball(
-    Math.floor(WIDTH_IN_CELLS * 0.7),
-    Math.floor(HEIGHT_IN_CELLS * 0.3),
-    1.25
-  ),
-];
+let metaballs: Metaball[] = [];
 
 export function step(prev: number[], params: IsoblobsParams): number[] {
-  let { speedScalar, horizontal, vertical } = params;
+  let { speedScalar, horizontal, vertical, count } = params;
   speedScalar =
     speedScalar === undefined ? initialIsoblobsParams.speedScalar : speedScalar;
   horizontal =
     horizontal === undefined ? initialIsoblobsParams.horizontal : horizontal;
   vertical = vertical === undefined ? initialIsoblobsParams.vertical : vertical;
-  const next = new Array(prev.length).fill(0);
+  count = count === undefined ? initialIsoblobsParams.count : count;
 
+  const next = new Array(prev.length).fill(0);
   const now = Date.now();
 
-  metaballs[0].currX =
-    metaballs[0].x + 5 * horizontal * Math.sin((speedScalar * now) / 1020);
-  metaballs[0].currY =
-    metaballs[0].y + 5 * vertical * Math.cos((speedScalar * now) / 934);
-  metaballs[1].currX =
-    metaballs[1].x + 5 * horizontal * Math.sin((speedScalar * now) / 753);
-  metaballs[1].currY =
-    metaballs[1].y + 5 * vertical * Math.cos((speedScalar * now) / 1100);
-  metaballs[2].currX =
-    metaballs[2].x + 5 * horizontal * Math.sin((speedScalar * now) / 939);
-  metaballs[2].currY =
-    metaballs[2].y + 5 * vertical * Math.cos((speedScalar * now) / 873);
+  while (metaballs.length < count) {
+    metaballs.push(Metaball.create(metaballs.length));
+  }
+
+  metaballs = metaballs.slice(0, count);
+
+  for (let i = 0; i < count; i++) {
+    metaballs[i].update(now, { speedScalar, horizontal, vertical, count });
+  }
 
   for (let i = 0; i < WIDTH_IN_CELLS; i++) {
     for (let j = 0; j < HEIGHT_IN_CELLS; j++) {

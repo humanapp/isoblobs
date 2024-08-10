@@ -76,12 +76,13 @@ const IsoBlobParams: React.FC = () => {
   const { state } = useAppState();
   const { persistent } = state;
   const params = persistent.params[Algorithm.ISOBLOBS];
-  let { speedScalar, horizontal, vertical } = params;
+  let { speedScalar, horizontal, vertical, count } = params;
   speedScalar =
     speedScalar === undefined ? initialIsoblobsParams.speedScalar : speedScalar;
   horizontal =
     horizontal === undefined ? initialIsoblobsParams.horizontal : horizontal;
   vertical = vertical === undefined ? initialIsoblobsParams.vertical : vertical;
+  count = count === undefined ? initialIsoblobsParams.count : count;
 
   const onSpeedScalarChange = (value: number[]) => {
     xfrms.isoblobs.setSpeedScalar(value[0] / 100);
@@ -91,6 +92,9 @@ const IsoBlobParams: React.FC = () => {
   };
   const onVerticalChange = (value: number[]) => {
     xfrms.isoblobs.setVertical(value[0] / 100);
+  };
+  const onCountChange = (value: number[]) => {
+    xfrms.isoblobs.setCount(value[0]);
   };
 
   return (
@@ -123,6 +127,16 @@ const IsoBlobParams: React.FC = () => {
         onValueChange={onVerticalChange}
       />
       <div>{Math.round(vertical * 100)}%</div>
+
+      <div className="content-center">Blob Count</div>
+      <Slider
+        className="w-100"
+        min={0}
+        max={10}
+        value={[count]}
+        onValueChange={onCountChange}
+      />
+      <div>{count}</div>
     </>
   );
 };
