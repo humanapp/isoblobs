@@ -13,8 +13,8 @@ export type IsoblobsParams = {
 
 export const initialIsoblobsParams: IsoblobsParams = {
   speedScalar: 0.5,
-  horizontal: 0.1,
-  vertical: 0.1,
+  horizontal: 0.7,
+  vertical: 0.4,
 };
 
 export const AlgorithmNames = {
