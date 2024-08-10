@@ -24,7 +24,7 @@ export const App: React.FC = () => {
   return (
     <div className="app">
       {ready ? (
-        <div className="flex gap-2 m-2">
+        <div className="flex flex-col lg:flex-row gap-2 m-2">
           <Sim />
           <Controls />
         </div>
