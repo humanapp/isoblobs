@@ -1,3 +1,4 @@
 import * as isoblobs from "./isoblobs";
+import * as perlinwind from "./perlinwind";
 
-export { isoblobs };
+export { isoblobs, perlinwind };

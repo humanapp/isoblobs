@@ -1,5 +1,9 @@
 import { IsoblobsParams, initialIsoblobsParams } from "../types";
-import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS, Isoblobs_Sim_Params } from "../constants";
+import {
+  WIDTH_IN_CELLS,
+  HEIGHT_IN_CELLS,
+  Isoblobs_Sim_Params,
+} from "../constants";
 
 class Metaball {
   currX: number;
@@ -30,8 +34,16 @@ class Metaball {
   }
 
   update(now: number, params: IsoblobsParams): void {
-    this.currX = this.x + WIDTH_IN_CELLS * params.horizontal * (Math.sin(params.speedScalar * now / (this.h * 1000)));
-    this.currY = this.y + HEIGHT_IN_CELLS * params.vertical * (Math.cos(params.speedScalar * now / (this.v * 1000)));
+    this.currX =
+      this.x +
+      WIDTH_IN_CELLS *
+        params.horizontal *
+        Math.sin((params.speedScalar * now) / (this.h * 1000));
+    this.currY =
+      this.y +
+      HEIGHT_IN_CELLS *
+        params.vertical *
+        Math.cos((params.speedScalar * now) / (this.v * 1000));
   }
 }
 
@@ -46,8 +58,8 @@ export function step(prev: number[], params: IsoblobsParams): number[] {
   vertical = vertical === undefined ? initialIsoblobsParams.vertical : vertical;
   count = count === undefined ? initialIsoblobsParams.count : count;
 
-  const next = new Array(prev.length).fill(0);
   const now = Date.now();
+  const next = new Array(prev.length).fill(0);
 
   while (metaballs.length < count) {
     metaballs.push(Metaball.create(metaballs.length));
@@ -59,13 +71,13 @@ export function step(prev: number[], params: IsoblobsParams): number[] {
     metaballs[i].update(now, { speedScalar, horizontal, vertical, count });
   }
 
-  for (let i = 0; i < WIDTH_IN_CELLS; i++) {
-    for (let j = 0; j < HEIGHT_IN_CELLS; j++) {
+  for (let x = 0; x < WIDTH_IN_CELLS; x++) {
+    for (let y = 0; y < HEIGHT_IN_CELLS; y++) {
       let sum = 0;
       for (const metaball of metaballs) {
-        sum += metaball.influence(i, j);
+        sum += metaball.influence(x, y);
       }
-      next[i + j * WIDTH_IN_CELLS] = sum;
+      next[x + y * WIDTH_IN_CELLS] = sum;
     }
   }
 

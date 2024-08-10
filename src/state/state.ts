@@ -1,18 +1,23 @@
-import { AlgorithmId, IsoblobsParams, initialIsoblobsParams } from "../types";
+import {
+  AlgorithmId,
+  IsoblobsParams,
+  PerlinWindParams,
+  initialIsoblobsParams,
+  initialPerlinWindParams,
+} from "../types";
 import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS } from "../constants";
 
-export type AlgorithmParams = IsoblobsParams;
+export type AlgorithmParams = IsoblobsParams | PerlinWindParams;
 
 export type EphimeralState = {
-  // Values in 0-1 range
   board: number[]; // WIDTH_IN_CELLS * HEIGHT_IN_CELLS
-  generation: number;
 };
 
 export type PersistentState = {
   showLeds: boolean;
   algorithm: AlgorithmId;
-  params: AlgorithmParams[];
+  isoBlobsParams: IsoblobsParams;
+  perlinWindParams: PerlinWindParams;
 };
 
 export type AppState = {
@@ -23,11 +28,11 @@ export type AppState = {
 export const initialState: AppState = {
   ephemeral: {
     board: new Array(WIDTH_IN_CELLS * HEIGHT_IN_CELLS).fill(0),
-    generation: 0,
   },
   persistent: {
     showLeds: false,
     algorithm: AlgorithmId.ISOBLOBS,
-    params: [initialIsoblobsParams],
+    isoBlobsParams: { ...initialIsoblobsParams },
+    perlinWindParams: { ...initialPerlinWindParams },
   },
 };

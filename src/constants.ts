@@ -16,7 +16,7 @@ type IsoblobsSimParams = {
   h: number;
   // Value in 0-1 range
   v: number;
-}
+};
 
 export const Isoblobs_Sim_Params: IsoblobsSimParams[] = [
   { x: 8, y: 5, r: 1.25, h: 0.71, v: 0.4 },
@@ -34,5 +34,5 @@ export const Isoblobs_Sim_Params: IsoblobsSimParams[] = [
   { x: 15, y: 5, r: 0.25, h: 0.85, v: -0.48 },
   { x: 3, y: 4, r: 0.25, h: 0.43, v: 0.27 },
   { x: 2, y: 8, r: 0.25, h: -0.34, v: -0.72 },
-  { x: 8, y: 6, r: 2, h: 0.17, v: 0.49 }
+  { x: 8, y: 6, r: 2, h: 0.17, v: 0.49 },
 ];

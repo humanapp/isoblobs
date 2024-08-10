@@ -7,7 +7,6 @@ import * as xfrms from "../transforms";
 let running: boolean = false;
 let lastUpdate: number = 0;
 let animFrame: number = 0;
-
 let updating = false;
 
 function update() {
@@ -31,13 +30,22 @@ function update() {
   if (shouldUpdate) {
     lastUpdate = now;
     switch (algorithm) {
-      case AlgorithmId.ISOBLOBS:
+      case AlgorithmId.ISOBLOBS: {
         const nextBoard = algorithms.isoblobs.step(
           board,
-          persistent.params[AlgorithmId.ISOBLOBS]
+          persistent.isoBlobsParams
         );
         xfrms.setBoard(nextBoard);
         break;
+      }
+      case AlgorithmId.PERLINWIND: {
+        const nextBoard = algorithms.perlinwind.step(
+          board,
+          persistent.perlinWindParams
+        );
+        xfrms.setBoard(nextBoard);
+        break;
+      }
     }
   }
 

@@ -30,6 +30,12 @@ export const initialIsoblobsParams: IsoblobsParams = {
   count: 5,
 };
 
+export const initialPerlinWindParams: PerlinWindParams = {
+  speedScalar: 0.2,
+  direction: 0.5,
+  turbulence: 0.5,
+};
+
 export const Algorithms = {
   [AlgorithmId.ISOBLOBS]: {
     id: AlgorithmId.ISOBLOBS,
@@ -38,5 +44,5 @@ export const Algorithms = {
   [AlgorithmId.PERLINWIND]: {
     id: AlgorithmId.PERLINWIND,
     name: "perlin wind",
-  }
+  },
 };

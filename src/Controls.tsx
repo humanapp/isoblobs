@@ -75,7 +75,7 @@ const AlgorithmSelector: React.FC = () => {
 const IsoBlobParams: React.FC = () => {
   const { state } = useAppState();
   const { persistent } = state;
-  const params = persistent.params[AlgorithmId.ISOBLOBS];
+  const params = persistent.isoBlobsParams;
   let { speedScalar, horizontal, vertical, count } = params;
   speedScalar =
     speedScalar === undefined ? initialIsoblobsParams.speedScalar : speedScalar;
