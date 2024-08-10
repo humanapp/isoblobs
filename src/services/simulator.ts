@@ -32,7 +32,10 @@ function update() {
     lastUpdate = now;
     switch (algorithm) {
       case Algorithm.ISOBLOBS:
-        const nextBoard = algorithms.isoblobs.step(board, persistent.params[Algorithm.ISOBLOBS]);
+        const nextBoard = algorithms.isoblobs.step(
+          board,
+          persistent.params[Algorithm.ISOBLOBS]
+        );
         xfrms.setBoard(nextBoard);
         break;
     }

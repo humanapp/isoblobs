@@ -77,9 +77,11 @@ const IsoBlobParams: React.FC = () => {
   const { persistent } = state;
   const params = persistent.params[Algorithm.ISOBLOBS];
   let { speedScalar, horizontal, vertical } = params;
-  speedScalar = (speedScalar === undefined) ? initialIsoblobsParams.speedScalar : speedScalar;
-  horizontal = (horizontal === undefined) ? initialIsoblobsParams.horizontal : horizontal;
-  vertical = (vertical === undefined) ? initialIsoblobsParams.vertical : vertical;
+  speedScalar =
+    speedScalar === undefined ? initialIsoblobsParams.speedScalar : speedScalar;
+  horizontal =
+    horizontal === undefined ? initialIsoblobsParams.horizontal : horizontal;
+  vertical = vertical === undefined ? initialIsoblobsParams.vertical : vertical;
 
   const onSpeedScalarChange = (value: number[]) => {
     xfrms.isoblobs.setSpeedScalar(value[0] / 100);

@@ -1,8 +1,6 @@
 const webpack = require('webpack')
 const { aliasWebpack } = require("react-app-alias-ex");
-//const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { EventSourcePolyfill } = require('event-source-polyfill');
 
 module.exports = function (config, env) {
     const isEnvProduction = env === "production";
@@ -11,10 +9,6 @@ module.exports = function (config, env) {
         ...aliasFn(config),
         plugins: [
             ...config.plugins.filter((p) => !(p instanceof HtmlWebpackPlugin)),
-            new webpack.ProvidePlugin({
-              //"window.EventSource": ['event-source-polyfill', 'EventSourcePolyfill'],
-            }),
-            //new NodePolyfillPlugin(),
             new HtmlWebpackPlugin(
                 Object.assign(
                     {},
