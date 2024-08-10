@@ -1,6 +1,6 @@
 import { AppState } from "./state";
 import { Action } from "./actions";
-import { Algorithm } from "../types";
+import { AlgorithmId } from "../types";
 
 export function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -40,7 +40,7 @@ export function reducer(state: AppState, action: Action): AppState {
           params: [...state.persistent.params],
         },
       };
-      newState.persistent.params[Algorithm.ISOBLOBS].speedScalar =
+      newState.persistent.params[AlgorithmId.ISOBLOBS].speedScalar =
         action.speedScalar;
       return newState;
     }
@@ -52,7 +52,7 @@ export function reducer(state: AppState, action: Action): AppState {
           params: [...state.persistent.params],
         },
       };
-      newState.persistent.params[Algorithm.ISOBLOBS].horizontal =
+      newState.persistent.params[AlgorithmId.ISOBLOBS].horizontal =
         action.horizontal;
       return newState;
     }
@@ -64,7 +64,7 @@ export function reducer(state: AppState, action: Action): AppState {
           params: [...state.persistent.params],
         },
       };
-      newState.persistent.params[Algorithm.ISOBLOBS].vertical = action.vertical;
+      newState.persistent.params[AlgorithmId.ISOBLOBS].vertical = action.vertical;
       return newState;
     }
     case "ISOBLOBS_SET_COUNT": {
@@ -75,7 +75,7 @@ export function reducer(state: AppState, action: Action): AppState {
           params: [...state.persistent.params],
         },
       };
-      newState.persistent.params[Algorithm.ISOBLOBS].count = action.count;
+      newState.persistent.params[AlgorithmId.ISOBLOBS].count = action.count;
       return newState;
     }
   }

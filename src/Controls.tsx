@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { ChevronsUpDown } from "lucide-react";
 import { useAppState } from "./hooks/useAppState";
 import * as xfrms from "./transforms";
-import { Algorithm, AlgorithmNames, initialIsoblobsParams } from "./types";
+import { AlgorithmId, Algorithms, initialIsoblobsParams } from "./types";
 
 const ShowLEDs: React.FC = () => {
   const { state } = useAppState();
@@ -40,7 +40,7 @@ const AlgorithmSelector: React.FC = () => {
   const { state } = useAppState();
   const { persistent } = state;
 
-  const onAlgorithmChange = (algorithm: Algorithm) => {
+  const onAlgorithmChange = (algorithm: AlgorithmId) => {
     xfrms.setAlgorithm(algorithm);
   };
 
@@ -50,19 +50,19 @@ const AlgorithmSelector: React.FC = () => {
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Button variant="outline" className="justify-between">
-            {AlgorithmNames[persistent.algorithm]}
+            {Algorithms[persistent.algorithm].name}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>Select</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {Object.values(Algorithm).map((algorithm) => (
+          {Object.values(Algorithms).map((algorithm) => (
             <DropdownMenuItem
-              key={algorithm}
-              onClick={() => onAlgorithmChange(algorithm as Algorithm)}
+              key={algorithm.id}
+              onClick={() => onAlgorithmChange(algorithm.id)}
             >
-              {AlgorithmNames[algorithm as Algorithm]}
+              {algorithm.name}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
@@ -75,7 +75,7 @@ const AlgorithmSelector: React.FC = () => {
 const IsoBlobParams: React.FC = () => {
   const { state } = useAppState();
   const { persistent } = state;
-  const params = persistent.params[Algorithm.ISOBLOBS];
+  const params = persistent.params[AlgorithmId.ISOBLOBS];
   let { speedScalar, horizontal, vertical, count } = params;
   speedScalar =
     speedScalar === undefined ? initialIsoblobsParams.speedScalar : speedScalar;
@@ -156,7 +156,7 @@ export const Controls: React.FC = () => {
         <Separator />
         <Separator />
         <AlgorithmSelector />
-        {persistent.algorithm === Algorithm.ISOBLOBS && <IsoBlobParams />}
+        {persistent.algorithm === AlgorithmId.ISOBLOBS && <IsoBlobParams />}
       </CardContent>
     </Card>
   );

@@ -1,4 +1,4 @@
-import { Algorithm, IsoblobsParams, initialIsoblobsParams } from "../types";
+import { AlgorithmId, IsoblobsParams, initialIsoblobsParams } from "../types";
 import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS } from "../constants";
 
 export type AlgorithmParams = IsoblobsParams;
@@ -11,7 +11,7 @@ export type EphimeralState = {
 
 export type PersistentState = {
   showLeds: boolean;
-  algorithm: Algorithm;
+  algorithm: AlgorithmId;
   params: AlgorithmParams[];
 };
 
@@ -27,7 +27,7 @@ export const initialState: AppState = {
   },
   persistent: {
     showLeds: false,
-    algorithm: Algorithm.ISOBLOBS,
+    algorithm: AlgorithmId.ISOBLOBS,
     params: [initialIsoblobsParams],
   },
 };

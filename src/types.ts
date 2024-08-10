@@ -1,6 +1,6 @@
-export enum Algorithm {
+export enum AlgorithmId {
   ISOBLOBS,
-  //PERLINWIND,
+  PERLINWIND,
 }
 
 export type IsoblobsParams = {
@@ -24,13 +24,19 @@ export type PerlinWindParams = {
 };
 
 export const initialIsoblobsParams: IsoblobsParams = {
-  speedScalar: 0.5,
-  horizontal: 0.3,
-  vertical: 0.3,
-  count: 3,
+  speedScalar: 0.2,
+  horizontal: 0.35,
+  vertical: 0.4,
+  count: 5,
 };
 
-export const AlgorithmNames = {
-  [Algorithm.ISOBLOBS]: "iso blobs",
-  //[Algorithm.PERLINWIND]: "perlin wind",
+export const Algorithms = {
+  [AlgorithmId.ISOBLOBS]: {
+    id: AlgorithmId.ISOBLOBS,
+    name: "iso blobs",
+  },
+  [AlgorithmId.PERLINWIND]: {
+    id: AlgorithmId.PERLINWIND,
+    name: "perlin wind",
+  }
 };

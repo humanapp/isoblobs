@@ -1,4 +1,4 @@
-import { Algorithm } from "../types";
+import { AlgorithmId } from "../types";
 
 type ActionBase = {
   type: string;
@@ -11,7 +11,7 @@ export type SetShowLeds_Action = ActionBase & {
 
 export type SetAlgorithm_Action = ActionBase & {
   type: "SET_ALGORITHM";
-  algorithm: Algorithm;
+  algorithm: AlgorithmId;
 };
 
 export type SetBoard_Action = ActionBase & {

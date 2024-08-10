@@ -1,5 +1,5 @@
 import { stateAndDispatch } from "../state/Context";
-import { Algorithm } from "../types";
+import { AlgorithmId } from "../types";
 import { MAX_FPS } from "../constants";
 import * as algorithms from "../algorithms";
 import * as xfrms from "../transforms";
@@ -31,10 +31,10 @@ function update() {
   if (shouldUpdate) {
     lastUpdate = now;
     switch (algorithm) {
-      case Algorithm.ISOBLOBS:
+      case AlgorithmId.ISOBLOBS:
         const nextBoard = algorithms.isoblobs.step(
           board,
-          persistent.params[Algorithm.ISOBLOBS]
+          persistent.params[AlgorithmId.ISOBLOBS]
         );
         xfrms.setBoard(nextBoard);
         break;
