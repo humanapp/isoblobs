@@ -80,11 +80,11 @@ export const initialLightCookiesParams: LightCookiesParams = {
   layers: [
     {
       cookie: lightCookie1,
-      offset: { x: 10, y: 20 },
-      scale: 0.45,
+      offset: { x: 25, y: 4 },
+      scale: 0.5,
       low: 0,
-      high: 0.25,
-      factor: -1,
+      high: 0.29,
+      factor: -1.2,
       blur: {
         enabled: true,
         directions: 16,
@@ -94,11 +94,11 @@ export const initialLightCookiesParams: LightCookiesParams = {
     },
     {
       cookie: lightCookie2,
-      offset: { x: 40, y: 10 },
+      offset: { x: 0, y: 5 },
       scale: 0.5,
       low: 0,
-      high: 0.25,
-      factor: 1,
+      high: 0.34,
+      factor: 1.35,
       blur: {
         enabled: true,
         directions: 16,
@@ -111,7 +111,7 @@ export const initialLightCookiesParams: LightCookiesParams = {
       offset: { x: 0, y: 0 },
       scale: 1,
       low: 0,
-      high: 1,
+      high: .5,
       factor: 0.1,
       blur: {
         enabled: false,
