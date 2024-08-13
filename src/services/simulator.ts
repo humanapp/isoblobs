@@ -46,6 +46,11 @@ function update() {
         xfrms.setBoard(nextBoard);
         break;
       }
+      case AlgorithmId.LIGHTCOOKIES: {
+        const nextBoard = algorithms.lightCookies.step(board, ephemeral.lightCookiesParams);
+        xfrms.setBoard(nextBoard);
+        break;
+      }
     }
   }
 

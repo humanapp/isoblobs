@@ -1,6 +1,11 @@
+import * as lightCookie1 from "./light_cookie_1.json";
+import * as lightCookie2 from "./light_cookie_2.json";
+import * as lightCookie3 from "./light_cookie_3.json";
+
 export enum AlgorithmId {
   ISOBLOBS,
   PERLINWIND,
+  LIGHTCOOKIES,
 }
 
 export type IsoblobsParams = {
@@ -23,6 +28,41 @@ export type PerlinWindParams = {
   turbulence: number;
 };
 
+export type Pixel = {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+};
+
+export type Image = {
+  width: number;
+  height: number;
+  pixels: Pixel[];
+};
+
+export type LightCookieLayer = {
+  cookie: Image;
+  offset: {
+    x: number;
+    y: number;
+  };
+  scale: number;
+  low: number;
+  high: number;
+  factor: number;
+  blur: {
+    enabled: boolean;
+    directions: number;
+    quality: number;
+    size: number;
+  };
+};
+
+export type LightCookiesParams = {
+  layers: LightCookieLayer[];
+};
+
 export const initialIsoblobsParams: IsoblobsParams = {
   speedScalar: 0.2,
   horizontal: 0.35,
@@ -36,6 +76,53 @@ export const initialPerlinWindParams: PerlinWindParams = {
   turbulence: 0.5,
 };
 
+export const initialLightCookiesParams: LightCookiesParams = {
+  layers: [
+    {
+      cookie: lightCookie1,
+      offset: { x: 10, y: 20 },
+      scale: .45,
+      low: 0,
+      high: 0.25,
+      factor: -1,
+      blur: {
+        enabled: true,
+        directions: 16,
+        quality: 3,
+        size: 15,
+      },
+    },
+    {
+      cookie: lightCookie2,
+      offset: { x: 40, y: 10 },
+      scale: .5,
+      low: 0,
+      high: .25,
+      factor: 1,
+      blur: {
+        enabled: true,
+        directions: 16,
+        quality: 3,
+        size: 15,
+      },
+    },
+    {
+      cookie: lightCookie3,
+      offset: { x: 0, y: 0 },
+      scale: 1,
+      low: 0,
+      high: 1,
+      factor: .1,
+      blur: {
+        enabled: false,
+        directions: 16,
+        quality: 2,
+        size: 15,
+      },
+    },
+  ],
+};
+
 export const Algorithms = {
   [AlgorithmId.ISOBLOBS]: {
     id: AlgorithmId.ISOBLOBS,
@@ -44,5 +131,9 @@ export const Algorithms = {
   [AlgorithmId.PERLINWIND]: {
     id: AlgorithmId.PERLINWIND,
     name: "perlin wind",
+  },
+  [AlgorithmId.LIGHTCOOKIES]: {
+    id: AlgorithmId.LIGHTCOOKIES,
+    name: "light cookies",
   },
 };
