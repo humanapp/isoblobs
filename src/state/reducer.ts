@@ -1,5 +1,10 @@
 import { AppState } from "./state";
-import { Action, CommonAction, IsoblobsAction, PerlinWindAction } from "./actions";
+import {
+  Action,
+  CommonAction,
+  IsoblobsAction,
+  PerlinWindAction,
+} from "./actions";
 
 function commonReducer(state: AppState, action: CommonAction): AppState {
   switch (action.type) {
@@ -40,7 +45,10 @@ function isoBlobsReducer(state: AppState, action: IsoblobsAction): AppState {
         ...state,
         persistent: {
           ...state.persistent,
-          isoBlobsParams: { ...state.persistent.isoBlobsParams, speedScalar: action.speedScalar },
+          isoBlobsParams: {
+            ...state.persistent.isoBlobsParams,
+            speedScalar: action.speedScalar,
+          },
         },
       };
     }
@@ -49,7 +57,10 @@ function isoBlobsReducer(state: AppState, action: IsoblobsAction): AppState {
         ...state,
         persistent: {
           ...state.persistent,
-          isoBlobsParams: { ...state.persistent.isoBlobsParams, horizontal: action.horizontal },
+          isoBlobsParams: {
+            ...state.persistent.isoBlobsParams,
+            horizontal: action.horizontal,
+          },
         },
       };
     }
@@ -58,7 +69,10 @@ function isoBlobsReducer(state: AppState, action: IsoblobsAction): AppState {
         ...state,
         persistent: {
           ...state.persistent,
-          isoBlobsParams: { ...state.persistent.isoBlobsParams, vertical: action.vertical },
+          isoBlobsParams: {
+            ...state.persistent.isoBlobsParams,
+            vertical: action.vertical,
+          },
         },
       };
     }
@@ -67,21 +81,30 @@ function isoBlobsReducer(state: AppState, action: IsoblobsAction): AppState {
         ...state,
         persistent: {
           ...state.persistent,
-          isoBlobsParams: { ...state.persistent.isoBlobsParams, count: action.count },
+          isoBlobsParams: {
+            ...state.persistent.isoBlobsParams,
+            count: action.count,
+          },
         },
       };
     }
   }
 }
 
-function perlinWindReducer(state: AppState, action: PerlinWindAction): AppState {
+function perlinWindReducer(
+  state: AppState,
+  action: PerlinWindAction
+): AppState {
   switch (action.type) {
     case "PERLINWIND_SET_SPEED_SCALAR": {
       return {
         ...state,
         persistent: {
           ...state.persistent,
-          perlinWindParams: { ...state.persistent.perlinWindParams, speedScalar: action.speedScalar },
+          perlinWindParams: {
+            ...state.persistent.perlinWindParams,
+            speedScalar: action.speedScalar,
+          },
         },
       };
     }

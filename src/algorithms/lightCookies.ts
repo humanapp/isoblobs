@@ -1,28 +1,28 @@
 import { Image, LightCookiesParams } from "../types";
-import {
-  WIDTH_IN_CELLS,
-  HEIGHT_IN_CELLS,
-  CELLS_ASPECT_RATIO,
-} from "../constants";
+import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS } from "../constants";
 
 const TWO_PI = Math.PI * 2;
 
 type vec2 = { x: number; y: number };
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 function vec2(x: number, y: number): vec2 {
   return { x, y };
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function vec2i(v: number): vec2 {
   return vec2(v, v);
 }
 function v2add(a: vec2, b: vec2): vec2 {
   return vec2(a.x + b.x, a.y + b.y);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v2addi(a: vec2, b: number): vec2 {
   return vec2(a.x + b, a.y + b);
 }
 function v2sub(a: vec2, b: vec2): vec2 {
   return vec2(a.x - b.x, a.y - b.y);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v2subi(a: vec2, b: number): vec2 {
   return vec2(a.x - b, a.y - b);
 }
@@ -32,6 +32,7 @@ function v2scale(a: vec2, s: number): vec2 {
 function v2mul(a: vec2, b: vec2): vec2 {
   return vec2(a.x * b.x, a.y * b.y);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v2floor(a: vec2): vec2 {
   return vec2(Math.floor(a.x), Math.floor(a.y));
 }
@@ -40,9 +41,11 @@ function v2rot(a: vec2, angle: number): vec2 {
   const s = Math.sin(angle);
   return vec2(a.x * c - a.y * s, a.x * s + a.y * c);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v2dot(a: vec2, b: vec2): number {
   return a.x * b.x + a.y * b.y;
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v2max(a: vec2, b: vec2): vec2 {
   return vec2(Math.max(a.x, b.x), Math.max(a.y, b.y));
 }
@@ -54,24 +57,31 @@ function v2hash(p: vec2): number {
 */
 
 type vec3 = { x: number; y: number; z: number };
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 function vec3(x: number, y: number, z: number): vec3 {
   return { x, y, z };
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function vec3i(v: number): vec3 {
   return vec3(v, v, v);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v3dot(a: vec3, b: vec3): number {
   return a.x * b.x + a.y * b.y + a.z * b.z;
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v3max(a: vec3, b: vec3): vec3 {
   return vec3(Math.max(a.x, b.x), Math.max(a.y, b.y), Math.max(a.z, b.z));
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v3add(a: vec3, b: vec3): vec3 {
   return vec3(a.x + b.x, a.y + b.y, a.z + b.z);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v3sub(a: vec3, b: vec3): vec3 {
   return vec3(a.x - b.x, a.y - b.y, a.z - b.z);
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function v3mul(a: vec3, b: vec3): vec3 {
   return vec3(a.x * b.x, a.y * b.y, a.z * b.z);
 }
@@ -106,6 +116,7 @@ function smoothstep(min: number, max: number, value: number) {
   return x * x * (3 - 2 * x);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function rotate(v: vec2, offset: vec2, angle: number): vec2 {
   return v2add(v2rot(v2sub(v, offset), angle), offset);
 }
@@ -161,6 +172,7 @@ export function step(prev: number[], params: LightCookiesParams): number[] {
 
   for (let layerIndex = 0; layerIndex < layers.length; layerIndex++) {
     const params = layers[layerIndex];
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const inst = lightCookieInstances[layerIndex];
 
     const { cookie, blur, offset, scale, low, high, factor } = params;
@@ -169,8 +181,8 @@ export function step(prev: number[], params: LightCookiesParams): number[] {
     const currOffset = v2add(
       offset,
       vec2(
-        scale * Math.sin((1.34 * factor * now / 1000)),
-        scale * Math.cos((2.4 * factor * now / 1000))
+        scale * Math.sin((1.34 * factor * now) / 1000),
+        scale * Math.cos((2.4 * factor * now) / 1000)
       )
     );
 

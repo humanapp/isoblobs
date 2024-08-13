@@ -9,7 +9,10 @@ import {
 } from "../types";
 import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS } from "../constants";
 
-export type AlgorithmParams = IsoblobsParams | PerlinWindParams | LightCookiesParams;
+export type AlgorithmParams =
+  | IsoblobsParams
+  | PerlinWindParams
+  | LightCookiesParams;
 
 export type EphimeralState = {
   board: number[]; // WIDTH_IN_CELLS * HEIGHT_IN_CELLS

@@ -45,9 +45,9 @@ export type PerlinWind_SetSpeedScalar_Action = ActionBase & {
 };
 
 export type CommonAction =
-| SetShowLeds_Action
-| SetAlgorithm_Action
-| SetBoard_Action;
+  | SetShowLeds_Action
+  | SetAlgorithm_Action
+  | SetBoard_Action;
 
 export type IsoblobsAction =
   | Isoblobs_SetSpeedScalar_Action
@@ -55,10 +55,6 @@ export type IsoblobsAction =
   | Isoblobs_SetVertical_Action
   | Isoblobs_SetCount_Action;
 
-export type PerlinWindAction =
-  | PerlinWind_SetSpeedScalar_Action;
+export type PerlinWindAction = PerlinWind_SetSpeedScalar_Action;
 
-export type Action =
-  | CommonAction
-  | IsoblobsAction
-  | PerlinWindAction;
+export type Action = CommonAction | IsoblobsAction | PerlinWindAction;
