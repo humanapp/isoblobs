@@ -6,6 +6,7 @@ export enum AlgorithmId {
   ISOBLOBS,
   PERLINWIND,
   LIGHTCOOKIES,
+  PLASMA,
 }
 
 export type IsoblobsParams = {
@@ -61,6 +62,9 @@ export type LightCookieLayer = {
 
 export type LightCookiesParams = {
   layers: LightCookieLayer[];
+};
+
+export type PlasmaParams = {
 };
 
 export const initialIsoblobsParams: IsoblobsParams = {
@@ -123,6 +127,9 @@ export const initialLightCookiesParams: LightCookiesParams = {
   ],
 };
 
+export const initialPlasmaParams: PlasmaParams = {
+};
+
 export const Algorithms = {
   [AlgorithmId.ISOBLOBS]: {
     id: AlgorithmId.ISOBLOBS,
@@ -130,10 +137,14 @@ export const Algorithms = {
   },
   [AlgorithmId.PERLINWIND]: {
     id: AlgorithmId.PERLINWIND,
-    name: "perlin wind",
+    name: "perlin clouds",
   },
   [AlgorithmId.LIGHTCOOKIES]: {
     id: AlgorithmId.LIGHTCOOKIES,
     name: "light cookies",
+  },
+  [AlgorithmId.PLASMA]: {
+    id: AlgorithmId.PLASMA,
+    name: "plasma",
   },
 };

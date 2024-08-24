@@ -54,6 +54,11 @@ function update() {
         xfrms.setBoard(nextBoard);
         break;
       }
+      case AlgorithmId.PLASMA: {
+        const nextBoard = algorithms.plasma.step(board, ephemeral.plasmaParams);
+        xfrms.setBoard(nextBoard);
+        break;
+      }
     }
   }
 
