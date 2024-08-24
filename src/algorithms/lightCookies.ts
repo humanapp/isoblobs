@@ -1,4 +1,4 @@
-import { Image, LightCookiesParams } from "../types";
+import { LightCookiesParams } from "../types";
 import { WIDTH_IN_CELLS, HEIGHT_IN_CELLS } from "../constants";
 import { gaussian, sample, smoothstep, v2add, vec2 } from "../math";
 

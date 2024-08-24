@@ -64,8 +64,7 @@ export type LightCookiesParams = {
   layers: LightCookieLayer[];
 };
 
-export type PlasmaParams = {
-};
+export type PlasmaParams = {};
 
 export const initialIsoblobsParams: IsoblobsParams = {
   speedScalar: 0.2,
@@ -115,7 +114,7 @@ export const initialLightCookiesParams: LightCookiesParams = {
       offset: { x: 0, y: 0 },
       scale: 1,
       low: 0,
-      high: .5,
+      high: 0.5,
       factor: 0.1,
       blur: {
         enabled: false,
@@ -127,8 +126,7 @@ export const initialLightCookiesParams: LightCookiesParams = {
   ],
 };
 
-export const initialPlasmaParams: PlasmaParams = {
-};
+export const initialPlasmaParams: PlasmaParams = {};
 
 export const Algorithms = {
   [AlgorithmId.ISOBLOBS]: {

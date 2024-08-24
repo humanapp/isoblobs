@@ -4,6 +4,7 @@ export const TWO_PI = Math.PI * 2;
 
 export type vec2 = { x: number; y: number };
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export function vec2(x: number, y: number): vec2 {
   return { x, y };
 }
@@ -51,6 +52,7 @@ function v2hash(p: vec2): number {
 
 export type vec3 = { x: number; y: number; z: number };
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export function vec3(x: number, y: number, z: number): vec3 {
   return { x, y, z };
 }
@@ -112,4 +114,3 @@ export function gaussian(
   }
   return s / (quality * directions - 15);
 }
-
